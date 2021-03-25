@@ -1,0 +1,39 @@
+ion-header{
+  ion-toolbar {
+    position: absolute;
+    width: 414px;
+    height: 200px;
+    left: 0px;
+    top: -15px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06);
+    border-radius: 30px;
+    ion-img {
+      height: 30% !important;
+      width: 30% !important;
+      align-items: center;
+      margin-left: 25% !important;
+      margin-top: 70px !important;
+    }
+
+
+  }
+}
+
+ion-content{
+
+  form{
+    margin-top: 220px;
+    padding: 30px;
+  }
+  ion-button{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    //top: 55px;
+    background: #51BFD0;
+    border-radius: 30px;
+
+  }
+
+}

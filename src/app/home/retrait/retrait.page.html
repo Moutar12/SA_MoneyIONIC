@@ -1,0 +1,140 @@
+<div>
+  <ion-header translucent={true}>
+    <ion-toolbar>
+      <ion-card class="ion-justify-content-center header">
+        <ion-card-header>
+          <ion-title>
+            <ion-icon name="home" class="icon" [routerLink]="['/home']"></ion-icon>
+          </ion-title>
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size-lg="1" size-md="1" size-sm="3" size="5">
+                <div>
+                  <img src="assets/money_logo.png"/>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+        <ion-card-content class="ion-align-items-center">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="display: flex; justify-content: center">
+                <div class="aboveDepot">
+                  <ion-icon id="depotIcon" src="assets/icon/retrait.svg" alt="retrait"></ion-icon>Retrait
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-toolbar>
+
+    <ion-toolbar  *ngIf="validerCode">
+      <!--       -->
+      <ion-col id="choice" size="12">
+        <ion-segment (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="emetteur">
+            <ion-label>Emetteur</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="bénéficiaire">
+            <ion-label>Bénéficiaire</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--  <ion-content>-->
+  <ion-grid>
+    <!--           Form Validate Code -->
+    <ion-row class="ion-justify-content-center" *ngIf="!validerCode">
+      <ion-col size="10" >
+        <ion-label id="labelCode">Code de transaction</ion-label>
+        <form id="form" [formGroup]="formCode">
+          <!--            <ion-label *ngIf="errorData">Username ou mot de passe incorrects!</ion-label>-->
+
+          <ion-item class="ion-margin-bottom itemCode">
+            <ion-input type="number" formControlName="codeTransaction" class="inputCode" placeholder="Entrez le code" ></ion-input>
+          </ion-item>
+          <ion-label  id="error">{{errorCode}}</ion-label>
+          <br>
+          <ion-button expand="block" class="validerButton" [disabled]="formCode.invalid"  shape="round" (click)="valider()">Valider</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <!--  </ion-content>-->
+
+  <ion-col class="wrapper" *ngIf="activeEmetteur && validerCode" >
+    <!--      *ngIf="activeEmetteur && validerCode"-->
+    <div class="scrollbar style-3">
+      <div class="force-overflow">
+
+        <ion-item lines="" class=" ion-margin-bottom">
+          <ion-label position="" class="ion-margin-bottom">N° CNI</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataClient.cni}}</span>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label>Nom</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataClient.nom}}</span>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label>Prénom</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataClient.prenom}}</span>
+        </ion-item>
+
+        <ion-item  class="ion-margin-bottom">
+          <ion-label>Téléphone</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataClient.phone}}</span>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label>Montant</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataClient.montant}}</span>
+        </ion-item>
+
+        <ion-row class="ion-justify-content-end ion-margin-top ion-margin-bottom" style="margin-bottom: 21px">
+          <ion-col class="ion-margin-bottom">
+            <ion-button expand="block" class="ion-justify-content-end ion-margin-top ion-margin-bottom" color="primary" shape="round" (click)="Suivant()">Suivant</ion-button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </div>
+  </ion-col>
+
+  <ion-col class="wrapper" *ngIf="activeBenefice && validerCode">
+    <div class="scrollbar style-3">
+      <div class="force-overflow">
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="">Nom</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataBeneficiaire.nom}}</span>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="">Prénom</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataBeneficiaire.prenom}}</span>
+        </ion-item>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="">Téléphone</ion-label>
+          <span class="dataClient ion-margin-top" slot="end">{{dataBeneficiaire.phone}}</span>
+        </ion-item>
+
+        <ion-row class="ion-justify-content-end ion-margin-top ion-margin-bottom">
+          <ion-col class="ion-margin-bottom" >
+            <ion-button color="danger" class="ion-margin-bottom" (click)="cancelRetrait()" >Annuler</ion-button>
+            <ion-button color="secondary" class="ion-margin-bottom" (click)="confirmRetrait()">Confirmer</ion-button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </div>
+  </ion-col>
+
+</div>

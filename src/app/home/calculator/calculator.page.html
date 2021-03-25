@@ -1,0 +1,58 @@
+<div>
+
+  <ion-toolbar>
+
+    <ion-card class="ion-justify-content-center header">
+      <ion-icon name="home" class="ion-padding " size="9" [routerLink]="['/home']"></ion-icon>
+      <ion-card-header>
+
+        <ion-grid>
+
+          <ion-row class="ion-justify-content-center">
+            <ion-col size-lg="1" size-md="1" size-sm="3" size="5">
+              <div>
+                <img src="./assets/money_logo.png"/>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+      <ion-card-content class="ion-align-items-center">
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="12" size-sm offset-sm="1" offset-md="2">
+              <div class="ion-text-center">
+                <ion-icon [src]="'./assets/icon/calculator.svg'" style="color: #FA4A0C;" ></ion-icon>
+                Calculer frais
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-toolbar>
+  <ion-col class="wrapper" >
+  <!--      *ngIf="activeEmetteur && validerCode"-->
+
+<!--  </ion-col>-->
+
+  <ion-grid >
+    <!--           Form Validate Code -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10" >
+        <ion-label id="labelCode" class="ion-justify-text-center">Montant</ion-label>
+        <form [formGroup]="calculForm" >
+            <ion-input type="number" class="form-control" formControlName="montant"></ion-input>
+            <div *ngIf="(montant.dirty || montant.touched) && montant.errors" class="errors">
+              <span *ngIf="montant.errors?.required">Montant is required</span>
+              <span *ngIf="montant.errors?.min">Montant is invalid</span>
+            </div>
+          <section class="btn">
+            <ion-button shape="round" class="suivant" type="submit" color="secondary" expand="block" [disabled]="!calculForm.valid" (click)="calculer()">Calculer</ion-button>
+          </section>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+

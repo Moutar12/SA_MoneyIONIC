@@ -1,0 +1,88 @@
+<ion-header>
+<ion-title>
+  <ion-icon name="home" class="icon" [routerLink]="['/home']"></ion-icon>
+</ion-title>
+  <ion-title>
+    <ion-img [src]="'../assets/money_logo.png'" style="width: 25%; height: 25%" class="img ion-align-self-end"></ion-img>
+  </ion-title>
+  <ion-title class="depot ion-text-center">
+    <ion-icon [src]="'./assets/icon/depot.svg'" color="secondary"></ion-icon>
+    Depot
+  </ion-title>
+</ion-header>
+
+<ion-content>
+<!--  <button-toolbar [iconName]="'return-up-forward'" [title]="'Depot'"></button-toolbar>-->
+  <!--segment-->
+  <ion-segment [(ngModel)]="segmentPage" style="--color: #FA4A0C;" value="emetteur" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="emetteur">
+      <ion-label>Emetteur</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="beneficiaire">
+      <ion-label>Bénéficiaire</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <!--segment-->
+  <!--form-->
+  <form class="ion-margin" [formGroup]="depotForm">
+    <ion-list [ngSwitch]="segmentPage">
+      <div *ngSwitchCase="'emetteur'">
+
+          <ion-item>
+            <ion-label position="floating">CNI</ion-label>
+            <ion-input formControlName="cni"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" formControlName="nomEnvoi"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Prenom</ion-label>
+            <ion-input type="text" formControlName="prenomEnvoi"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Telephone</ion-label>
+            <ion-input type="text" formControlName="phoneEnvoi"></ion-input>
+          </ion-item>
+
+        <ion-item  lines="full" class="ion-margin-bottom fraisItem">
+        <ion-label position="floating">Montant</ion-label>
+        <ion-input type="number" [value]="montantSend"  class="argent" formControlName="montant" (keyup)="calculFrais($event)" ></ion-input>
+        </ion-item>
+
+        <ion-item  lines="full" class="ion-margin-bottom fraisItem">
+          <ion-label position="floating">Frais</ion-label>
+          <ion-input class="fraisInput" value="{{frais}}" disabled></ion-input>
+        </ion-item>
+        <!--                <ion-label color="danger" class="ion-justify-content-center error" *ngIf="phoneEmetteur.hasError('required') && phoneEmetteur.touched">Lorem ipsum dolor sit amet.</ion-label>-->
+
+        <ion-item class="total">
+          <ion-label position="floating">Total</ion-label>
+          <ion-input type="number" (keyup)="calculTotal($event)"  [value]="montantTotal" class="argent" ></ion-input>
+        </ion-item>
+      </div>
+      <div *ngSwitchCase="'beneficiaire'">
+
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" formControlName="nomRec"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Prenom</ion-label>
+            <ion-input type="text" formControlName="prenomRec"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">CNI</ion-label>
+            <ion-input type="text" formControlName="cni"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Telephone</ion-label>
+            <ion-input type="text" formControlName="phoneRec"></ion-input>
+          </ion-item>
+
+      </div>
+    </ion-list>
+    <ion-button class="ion-margin" color="secondary" (click)="submit()" expand="full">Suivant</ion-button>
+  </form>
+  <!--form-->
+</ion-content>

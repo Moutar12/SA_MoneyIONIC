@@ -1,0 +1,67 @@
+<div>
+
+    <ion-toolbar>
+
+      <ion-card class="ion-justify-content-center header">
+          <ion-icon name="home" class="ion-padding " size="9" [routerLink]="['/home']"></ion-icon>
+        <ion-card-header>
+
+          <ion-grid>
+
+            <ion-row class="ion-justify-content-center">
+              <ion-col size-lg="1" size-md="1" size-sm="3" size="5">
+                <div>
+                  <img src="./assets/money_logo.png"/>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+        <ion-card-content class="ion-align-items-center">
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="10" size-sm="3" offset-sm="1" offset-md="2">
+                <div class="ion-text-center">
+                  <ion-icon [src]="'./assets/icon/depot.svg'" style="color: #FA4A0C;" ></ion-icon>
+                  Dépôt
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-toolbar>
+
+
+
+
+  <ion-col class="wrapper" >
+    <!--      *ngIf="activeEmetteur && validerCode"-->
+
+  </ion-col>
+
+  <ion-grid >
+    <!--           Form Validate Code -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10" >
+        <ion-label id="labelCode" class="ion-text-center">Montant</ion-label>
+        <form id="form"  [formGroup]="formDepot">
+          <ion-item class="ion-margin-bottom itemCode">
+            <ion-input type="number" formControlName="montant" class="inputCode" placeholder="Entrez le montant" ></ion-input>
+          </ion-item>
+          <ion-label  id="error"></ion-label>
+
+          <ion-item>
+            <ion-label>Compte</ion-label>
+            <ion-select value="comptes"  formControlName="comptes">
+              <ion-select-option *ngFor="let comp of compte" value="{{comp.id}}">{{comp.numCompte}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br>
+          <ion-button expand="block" class="validerButton" (click)="deposer()">Déposer</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>

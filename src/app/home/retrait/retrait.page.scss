@@ -1,0 +1,118 @@
+//ion-card-header{
+//  padding: 0;
+//}
+//// -------------------------------------------- ## ------------------------------------------------- //
+//
+//ion-card-content{
+//  padding: 25px 70px;
+//  padding-bottom: 0;
+//  padding: 0;
+//  scroll-padding-right: 1px;
+//}
+//.aboveDepot{
+//  border-bottom: rgb(133, 191, 224) solid 4px;
+//  font-size: 1.1em;
+//}
+////------------------------------------------------ ## ----------------------------------------------//
+//
+//header {
+//  font-family: 'Lobster', cursive;
+//  text-align: center;
+//  font-size: 25px;
+//}
+//
+//// -------------------------------------------------- ## ---------------------------------------------//
+//.scrollbar {
+//  height: 100%;
+//  //min-height: 300px;
+//  background: white;
+//  overflow-y: scroll;
+//  padding: 25px;
+//  padding-top: 1px;
+//}
+//
+//.force-overflow {
+//  height: 10px;
+//}
+//.wrapper {
+//  text-align: center;
+//  width: 500px;
+//  margin: auto;
+//}
+//.style-3::-webkit-scrollbar-track {
+//  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//  background-color: white;
+//}
+//.style-3::-webkit-scrollbar {
+//  width: 1px;
+//  background-color: white;
+//}
+//.style-3::-webkit-scrollbar-thumb {
+//  background-color: white;
+//}
+//
+//// ---------------------------------------------- Code de transaction ------------------------------------------------- //
+//#labelCode{
+//  font-size: 1.4em;
+//  color: rgb(132, 167, 172);
+//  font-family: "Courier New";
+//  font-weight: bold;
+//  display: flex;
+//  text-align: center;
+//}
+//#form {
+//  margin-top: 20px;
+//
+//  .validerButton {
+//    font-size: 18px;
+//    text-transform: initial;
+//    border-radius: 50px;
+//    box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
+//    --box-shadow: none;
+//  }
+//}
+//
+//.itemCode {
+//  border-radius: 50px;
+//  //height: 55px;
+//  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.08);
+//  //--highlight-height: 0px;
+//  margin-top: 2px;
+//  border-bottom: solid #95c8bb 2px;
+//
+//  .inputCode {
+//
+//    font-size: 18px;
+//    --padding-top: 20px;
+//    --padding-bottom: 15px;
+//    --padding-start: 5px;
+//  }
+//}
+//
+//#error{
+//  text-align: center;
+//  display: flex;
+//  font-size: 1em;
+//  color: red;
+//}
+//
+//// -------------------------------------------- ### ----------------------------------------- //
+//
+//.dataClient {
+//  margin-top: 32px;
+//  //margin-left: 70px;
+//  font-weight: bold;
+//  color: #87c4e2;
+//}
+//
+//// ------------------------------------------- ### ----------------------------------------- //
+//
+//@media screen and (min-width: 300px) {
+//  .aboveDepot {
+//    border-bottom: none;
+//    font-size: 1.3em;
+//  }
+//  #error {
+//    font-size: 1.3em;
+//  }
+//}

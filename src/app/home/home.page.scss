@@ -1,0 +1,65 @@
+ion-header{
+
+  .ion-icon{
+    margin-left: 35%;
+    margin-right: 35%;
+    display: block;
+  }
+
+  //.ion-float{
+  //  margin-left: 90%;
+  //  display: block;
+  //}
+}
+
+
+ion-menu {
+  --ion-background-color: #51BFD0;;
+  --ion-item-color: #FFFFFF;
+   border-radius: 20px;
+
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+  }
+
+  ion-list {/* optional, but it needs when you use gradient as a background color.*/
+    margin-top: 70px;
+    //padding: 30px;
+
+    .ion-no-padding{
+      margin-top: 90px !important;
+    }
+  }
+}
+
+
+
+ion-content{
+  ion-card{
+    --min-height: 40px !important;
+    --max-height: 40px !important;
+    height: 110px !important;
+
+.card{
+  margin-top: -70px;
+}
+    .card-title{
+      margin-top: -20px;
+      color: #07AEEF;
+    }
+    .last-card{
+      margin-top: -20px;
+    }
+  }
+  .grid{
+    margin-top: 45px !important;
+  }
+  ion-grid{
+
+    margin-top: 20px !important;
+
+  }
+  ion-icon{
+    color: #FA4A0C;
+  }
+}

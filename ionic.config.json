@@ -1,0 +1,8 @@
+{
+  "name": "SA_MONEY",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

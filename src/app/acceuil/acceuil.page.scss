@@ -1,0 +1,31 @@
+ion-content{
+ion-list{
+  position: relative;
+  //width: 414px;
+  height: 680px;
+  background: url(../../assets/accueil.jpeg) no-repeat 100% 100%;
+  border-radius: 20px;
+}
+  .cercle{
+
+    width: 262px;
+    height: 262px;
+    display: flex;
+    padding: 30px;
+    margin-left: 70px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    top: 200px;
+    border-radius: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.15);
+
+  }
+  .center-img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    top: 50px;
+  }
+}

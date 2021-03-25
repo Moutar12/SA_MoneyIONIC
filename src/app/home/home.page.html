@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar style="background: #51BFD0;">
+  <ion-buttons slot="start" >
+    <ion-menu-button style="color: #51BFD0;"></ion-menu-button>
+  </ion-buttons>
+  <ion-title>
+    <ion-img style="width: 30px; height: 30px;" src="./assets/money_logo.png" class="ion-icon"></ion-img>
+  </ion-title>
+    <ion-item slot="end" *ngIf="avatar">
+      <img src="data:image/jpeg;base64,{{dataUser.avatar}}" alt="avatar" class="avatar" style="width: 30px; height: 30px; border-radius: 100%">
+<!--      <ion-img style="width: 30px; height: 30px;" src="./assets/money_logo.png" class="ion-float" ></ion-img>-->
+    </ion-item>
+</ion-toolbar>
+</ion-header>
+
+<ion-menu side="start" menuId="first" contentId="main">
+<!--  <ion-header>-->
+<!--    <ion-toolbar color="primary">-->
+<!--      <ion-title>Start Menu</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
+
+    <ion-list class="ion-padding">
+      <ion-item class="ion-padding">
+        <ion-icon name="home" style="color: #FFFFFF;"></ion-icon>
+        Home
+      </ion-item>
+      <ion-item class="ion-padding">
+        <ion-icon [src]="'./assets/icon/transaction.svg'" style="color: #FFFFFF;"></ion-icon>
+        Transaction
+      </ion-item>
+      <ion-item class="ion-padding">
+        <ion-icon [src]="'./assets/icon/commis.svg'" style="color: #FFFFFF;"></ion-icon>
+        Commissitions
+      </ion-item>
+      <ion-item class="ion-padding">
+        <ion-icon name="calculator" style="color: #FFFFFF;"></ion-icon>
+        Calculateur
+      </ion-item>
+
+      <ion-item class="ion-no-padding" lines="none" (click)="logOut()">
+        Déconnexion
+        <ion-icon name="arrow-forward" style="color: #FFFFFF;"></ion-icon>
+      </ion-item>
+
+    </ion-list>
+
+</ion-menu>
+
+<ion-content>
+
+<ion-card *ngIf="useragence || adminagence">
+  <ion-grid  class="grid">
+    <ion-card-header>
+      <ion-card-subtitle class="ion-padding card">Mon solde disponible</ion-card-subtitle>
+      <ion-card-title class="ion-padding card-title">{{compte?.solde}} FCFA</ion-card-title>
+      <ion-card-subtitle class="ion-padding last-card">Mis à jour le {{compte?.date}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-grid>
+</ion-card>
+
+
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeSm="8" *ngIf="useragence">
+        <ion-item class="ion-no-padding " [routerLink]="['./depot']" >
+        <ion-icon [src]="'./assets/icon/depot.svg'" style="color: #FA4A0C;" ></ion-icon>
+        Depot
+        </ion-item>
+      </ion-col>
+
+
+    <ion-col sizeSm="8" *ngIf="useragence">
+      <ion-item class="ion-no-padding" [routerLink]="['./retrait']" >
+        <ion-icon [src]="'./assets/icon/retrait.svg'" style="color: #FA4A0C;" ></ion-icon>
+        Retrait
+      </ion-item>
+    </ion-col>
+
+
+      <ion-col sizeSm="8" *ngIf="caissier">
+        <ion-item class="ion-no-padding" [routerLink]="['./depot-caissier']" >
+          <ion-icon [src]="'./assets/icon/retrait.svg'" style="color: #FA4A0C;" ></ion-icon>
+          Depot Caissier
+        </ion-item>
+      </ion-col>
+
+
+
+      <ion-col size="12" size-sm="8" size-md="6" size-lg="4" *ngIf="adminSystem || adminagence">
+        <ion-item class="ion-no-padding " >
+          <ion-icon [src]="'./assets/icon/transaction.svg'" style="color: #FA4A0C;"></ion-icon>
+          Mes transactions
+        </ion-item>
+      </ion-col>
+
+
+
+      <ion-col size="12" size-sm="8" size-md="6" size-lg="4" *ngIf="adminSystem">
+        <ion-item class="ion-no-padding " [routerLink]="['./add-users']">
+          <ion-icon name="person-add-outline" style="color: #FA4A0C;"></ion-icon>
+          Ajouter users
+        </ion-item>
+      </ion-col>
+
+
+
+      <ion-col size="12" size-sm="8" size-md="6" size-lg="4" *ngIf="adminagence || adminSystem">
+        <ion-item class="ion-no-padding">
+          <ion-icon [src]="'./assets/icon/all-transaction.svg'" style="color: #FA4A0C;"></ion-icon>
+          Toutes les transactions
+        </ion-item>
+      </ion-col>
+
+
+
+      <ion-col sizeSm="8" *ngIf="adminagence">
+        <ion-item class="ion-no-padding">
+          <ion-icon [src]="'./assets/icon/commis.svg'" style="color: #FA4A0C;"></ion-icon>
+          Mes commissions
+        </ion-item>
+      </ion-col>
+
+
+
+      <ion-col sizeSm="8" *ngIf="useragence">
+        <ion-item class="ion-no-padding" [routerLink]="['./calculator']">
+          <ion-icon [src]="'./assets/icon/calculator.svg'" style="color: #FA4A0C;"></ion-icon>
+          Calculateur de frais
+        </ion-item>
+      </ion-col>
+
+
+
+      <ion-col sizeSm="8">
+        <ion-item class="ion-no-padding" (click)="logOut()">
+          <ion-icon [src]="'./assets/icon/exit.svg'" style="color: #FA4A0C;"></ion-icon>
+          Déconnexion
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="time">
+          <ion-icon name="time"></ion-icon>
+          <ion-label>Historique</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="map">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-label>Info</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="calculator">
+          <ion-icon name="calculator"></ion-icon>
+          <ion-label>Calculator</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+
+
+  </ion-grid>
+
+</ion-content>
+

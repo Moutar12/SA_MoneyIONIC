@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-img [src]="'./assets/money_logo.png'"></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+
+
+  <ion-grid>
+    <form [formGroup]="formLogin">
+    <ion-row>
+      <ion-col sizeSm="3">
+  <ion-item>
+    <ion-label position="floating">Login</ion-label>
+    <ion-input type="text"  formControlName="username" [(ngModel)]="username"></ion-input>
+  </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col sizeSm="3">
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" formControlName="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeSm="12">
+        <ion-button expand="block" [disabled]="formLogin.invalid" color="secondary" shape="round" (click)="onSubmit()">Se connecter</ion-button>
+      </ion-col>
+    </ion-row>
+    </form>
+  </ion-grid>
+
+<!--  -->
+<!--    <ion-list>-->
+<!--      <ion-item>-->
+<!--        <ion-label>Username</ion-label>-->
+<!--        <ion-input  formControlName="username" type="text" [(ngModel)]="username"></ion-input>-->
+<!--      </ion-item>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label>Password</ion-label>-->
+<!--        <ion-input  formControlName="password" type="password" [(ngModel)]="password"></ion-input>-->
+<!--      </ion-item>-->
+<!--    </ion-list>-->
+<!--    <ion-button (click)="onSubmit()">Se connecter</ion-button>-->
+
+</ion-content>
+
+
